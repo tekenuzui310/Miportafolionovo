@@ -1,0 +1,617 @@
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Smooch Sans', sans-serif;
+    background: var(--bg-main);
+    color: var(--text-main);
+    transition: background .4s ease, color .4s ease;
+    overflow-x: hidden;
+}
+
+/* ================= THEMES ================= */
+:root {
+    --bg-main: #050505;
+    --bg-card: rgba(255,255,255,.08);
+    --text-main: #fff;
+    --text-soft: rgba(255,255,255,.75);
+    --accent: #ff0055;
+    --accent-soft: #ff66a3;
+    --shadow: rgba(0,0,0,.6);
+}
+
+body.light {
+    --bg-main: #f4f6fb;
+    --bg-card: #ffffff;
+    --text-main: #111;
+    --text-soft: #444;
+    --accent: #6c63ff;
+    --accent-soft: #9a95ff;
+    --shadow: rgba(0,0,0,.15);
+}
+
+body.neon {
+    --bg-main: radial-gradient(circle at top, #0f0c29, #050505);
+    --bg-card: rgba(0,0,0,.6);
+    --text-main: #eaffff;
+    --text-soft: #9efcff;
+    --accent: #00fff7;
+    --accent-soft: #ff00f7;
+    --shadow: rgba(0,255,255,.5);
+}
+
+/* ================= THEME BUTTON ================= */
+#theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: none;
+    background: var(--bg-card);
+    color: var(--text-main);
+    font-size: 1.4rem;
+    cursor: pointer;
+    box-shadow: 0 10px 30px var(--shadow);
+    backdrop-filter: blur(12px);
+    transition: transform .3s ease;
+    z-index: 999;
+}
+
+#theme-toggle:hover { transform: scale(1.15) rotate(12deg); }
+
+/* ================= HERO ================= */
+.inicio {
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    gap: 1rem;
+}
+
+.glitch {
+/* ================= H1 PRINCIPAL ================= */
+
+    font-family: 'Yellowtail', cursive;
+    font-size: clamp(3.2rem, 9vw, 8rem);
+    line-height: 1.05;
+    text-align: center;
+    text-shadow:
+        0 0 20px rgba(255, 0, 85, 0.8),
+        0 0 40px rgba(255, 0, 120, 0.6);
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+
+
+}
+
+.Programador,
+.Desarrollador,
+.Desenvolvedor {
+    letter-spacing: 2px;
+    opacity: .8;
+}
+
+/* ================= SECTIONS ================= */
+.block {
+    padding: 80px 8%;
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+}
+h2 {
+    text-align: center;
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 2rem;
+}
+
+/* ================= CARDS ================= */
+.box {
+    background: var(--bg-card);
+    backdrop-filter: blur(14px);
+    border-radius: 22px;
+    padding: 30px;
+    box-shadow: 0 20px 40px var(--shadow);
+    transition: transform .3s ease;
+}
+
+.box:hover { transform: translateY(-10px); }
+
+/* ================= ABOUT ================= */
+.Sobre_mi {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.mi_Imagen {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+    margin: auto;
+}
+
+/* ================= PROJECTS ================= */
+.Proyectos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+    gap: 2rem;
+}
+
+.proyecto video {
+    width: 100%;
+    border-radius: 14px;
+}
+
+/* ================= CONTACT ================= */
+.contactos {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.contactos img {
+    width: 45px;
+    filter: drop-shadow(0 0 10px var(--accent));
+    transition: transform .3s ease;
+}
+
+.contactos img:hover { transform: scale(1.2); }
+
+/* ================= FOOTER ================= */
+.derechos_de_autor {
+    text-align: center;
+    padding: 30px;
+    font-size: .9rem;
+    opacity: .6;
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes appear {
+    from { opacity: 0; transform: translateY(60px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glitch {
+    0% { text-shadow: red -3px 0, cyan 3px 0; }
+    50% { text-shadow: red 3px 0, cyan -3px 0; }
+    100% { text-shadow: red -3px 0, cyan 3px 0; }
+}
+
+.glitch:hover { animation: glitch .25s infinite; }
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .block { padding: 60px 5%; }
+    .glitch { font-size: 3rem; }
+}
+
+/* ================= THEME SWITCHER ================= */
+.theme-transition * {
+    transition: background-color .4s ease,
+                color .4s ease,
+                box-shadow .4s ease,
+                border-color .4s ease;
+}
+
+#theme-toggle {
+    animation: float 3s ease-in-out infinite;
+}
+
+#theme-toggle span {
+    display: inline-block;
+    transition: transform .4s ease;
+}
+
+#theme-toggle:active span {
+    transform: rotate(360deg) scale(1.2);
+}
+
+/* Glow extra en modo neon */
+body.neon #theme-toggle {
+    box-shadow:
+        0 0 20px var(--accent),
+        0 0 45px var(--accent-soft);
+}
+
+/* Animación flotante */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+#anime-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    width: 100%;
+    height: 100%;
+}
+
+/* Más glow en neon */
+body.neon #anime-bg {
+    filter: drop-shadow(0 0 25px var(--accent));
+}
+
+#planets-bg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -4;
+    pointer-events: none;
+}
+
+/* Glow extra en modo neon */
+body.neon #planets-bg {
+    filter: drop-shadow(0 0 30px var(--accent));
+}
+
+
+/* ================= GAMER BACKGROUND ================= */
+#planets-bg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -5;
+    pointer-events: none;
+    background: radial-gradient(circle at center, #050510, #000);
+}
+
+/* Intensidad por tema */
+body.dark #planets-bg {
+    opacity: 0.6;
+}
+
+body.light #planets-bg {
+    opacity: 0.35;
+}
+
+body.neon #planets-bg {
+    opacity: 1;
+    filter: drop-shadow(0 0 25px #00f2ff);
+}
+
+
+@media (max-width: 480px) {
+    .glitch {
+        font-size: clamp(2.8rem, 11vw, 4.5rem);
+        letter-spacing: 1px;
+        text-shadow:
+            0 0 12px rgba(255, 0, 85, 0.9);
+    }
+}
+
+/* ================= BOTÓN DE IDIOMA ================= */
+.lang-btn {
+    position: fixed;
+    top: 20px;
+    right: 80px; /* al lado del botón de tema */
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+
+    background: rgba(231, 231, 231, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 0 10px rgba(0, 242, 255, 0.25),
+        inset 0 0 6px rgba(255, 255, 255, 0.15);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+/* Hover */
+.lang-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow:
+        0 0 20px rgba(0, 242, 255, 0.5),
+        inset 0 0 8px rgba(255, 255, 255, 0.25);
+}
+
+/* Click */
+.lang-btn:active {
+    transform: scale(0.95);
+}
+
+/* Icono */
+#lang-icon {
+    filter: drop-shadow(0 0 4px rgba(0, 242, 255, 0.6));
+    transition: transform 0.3s ease;
+}
+
+.lang-btn:hover #lang-icon {
+    transform: rotate(10deg) scale(1.1);
+}
+
+/* LIGHT THEME */
+.light .lang-btn {
+    background: rgba(0, 0, 0, 0.08);
+    box-shadow:
+        0 0 10px rgba(0, 0, 0, 0.15),
+        inset 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+/* NEON THEME */
+.neon .lang-btn {
+    box-shadow:
+        0 0 12px rgba(255, 0, 255, 0.5),
+        0 0 24px rgba(0, 242, 255, 0.6);
+}
+
+.lang-animate {
+    animation: pulseLang 0.3s ease;
+}
+
+@keyframes pulseLang {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+/* ================= HERO ================= */
+.hero {
+    position: relative;
+    display: inline-block;
+}
+
+/* ================= ICONOS FLOTANTES ================= */
+.floating-icons {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.floating-icons img {
+    position: absolute;
+    width: 40px;
+    opacity: 0.9;
+
+    filter: drop-shadow(0 0 12px rgba(0, 242, 255, 0.7));
+
+    animation: floatIcon 6s ease-in-out infinite;
+}
+
+/* Posiciones individuales */
+.floating-icons img:nth-child(1) {
+    top: -40px;
+    left: -60px;
+    animation-delay: 0s;
+}
+
+.floating-icons img:nth-child(2) {
+    top: -50px;
+    right: -70px;
+    animation-delay: 1s;
+}
+
+.floating-icons img:nth-child(3) {
+    bottom: -50px;
+    left: -80px;
+    animation-delay: 2s;
+}
+
+.floating-icons img:nth-child(4) {
+    bottom: -60px;
+    right: -60px;
+    animation-delay: 3s;
+}
+
+.floating-icons img:nth-child(5) {
+    top: 50%;
+    right: -100px;
+    transform: translateY(-50%);
+    animation-delay: 4s;
+}
+
+/* Animación flotante */
+@keyframes floatIcon {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-12px) rotate(3deg);
+    }
+}
+.light .floating-icons img {
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.25));
+}
+
+.neon .floating-icons img {
+    filter: drop-shadow(0 0 16px rgba(255, 0, 255, 0.9));
+}
+@media (max-width: 768px) {
+    .floating-icons img {
+        width: 28px;
+    }
+
+    .floating-icons {
+        opacity: 0.6;
+    }
+}
+/* ================= HERO ORBIT ================= */
+.hero-orbit {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ================= ÓRBITA ================= */
+.orbit {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    pointer-events: none;
+
+    animation: rotateOrbit 22s linear infinite;
+}
+
+/* Elementos en la órbita */
+.orbit-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+}
+
+/* Iconos */
+.orbit-item img {
+    width: 42px;
+    height: 42px;
+
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(0 0 12px rgba(0, 242, 255, 0.8));
+}
+
+/* Posiciones angulares */
+.orbit-item:nth-child(1) {
+    transform: rotate(0deg) translateX(160px);
+}
+.orbit-item:nth-child(2) {
+    transform: rotate(72deg) translateX(160px);
+}
+.orbit-item:nth-child(3) {
+    transform: rotate(144deg) translateX(160px);
+}
+.orbit-item:nth-child(4) {
+    transform: rotate(216deg) translateX(160px);
+}
+.orbit-item:nth-child(5) {
+    transform: rotate(288deg) translateX(160px);
+}
+
+/* Animación de rotación */
+@keyframes rotateOrbit {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.orbit-item img {
+    animation: counterRotate 22s linear infinite;
+}
+
+@keyframes counterRotate {
+    from {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+}
+.light .orbit-item img {
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.25));
+}
+
+.neon .orbit-item img {
+    filter: drop-shadow(0 0 16px rgba(255, 0, 255, 0.9));
+}
+
+@media (max-width: 768px) {
+    .orbit {
+        width: 220px;
+        height: 220px;
+    }
+
+    .orbit-item:nth-child(n) {
+        transform: rotate(var(--angle)) translateX(110px);
+    }
+
+    .orbit-item img {
+        width: 28px;
+    }
+}
+
+.hero-orbit {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Órbita */
+.orbit {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    pointer-events: none;
+
+    animation: rotateOrbit 22s linear infinite;
+    transition: transform 0.2s ease-out;
+}
+
+/* Items */
+.orbit-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+/* Iconos */
+.orbit-item img {
+    width: 42px;
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(0 0 12px rgba(0, 242, 255, 0.8));
+
+    animation: counterRotate 22s linear infinite;
+}
+
+/* Ángulos */
+.orbit-item:nth-child(1) { transform: rotate(0deg) translateX(160px); }
+.orbit-item:nth-child(2) { transform: rotate(72deg) translateX(160px); }
+.orbit-item:nth-child(3) { transform: rotate(144deg) translateX(160px); }
+.orbit-item:nth-child(4) { transform: rotate(216deg) translateX(160px); }
+.orbit-item:nth-child(5) { transform: rotate(288deg) translateX(160px); }
+
+/* Animaciones base */
+@keyframes rotateOrbit {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+@keyframes counterRotate {
+    from { transform: translate(-50%, -50%) rotate(360deg); }
+    to   { transform: translate(-50%, -50%) rotate(0deg); }
+}
+.orbit {
+    animation: rotateOrbit 22s linear infinite;
+}
+
+@media (max-width: 768px) {
+    .orbit {
+        width: 220px;
+        height: 220px;
+    }
+
+    .orbit-item img {
+        width: 28px;
+    }
+}
