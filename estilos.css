@@ -4,7 +4,10 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+a {
+    text-decoration: none;
+    color: inherit;
+}
 html { scroll-behavior: smooth; }
 
 body {
@@ -615,3 +618,4 @@ body.neon #planets-bg {
         width: 28px;
     }
 }
+
