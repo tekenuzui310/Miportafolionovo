@@ -6,7 +6,7 @@
 }
 a {
     text-decoration: none;
-    color: inherit;
+    color:#000;
 }
 html { scroll-behavior: smooth; }
 
@@ -618,4 +618,5 @@ body.neon #planets-bg {
         width: 28px;
     }
 }
+
 
